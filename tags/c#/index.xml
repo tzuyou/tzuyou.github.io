@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C# on 佑哥部落格</title>
+    <link>https://tzuyou.github.io/tags/c#/</link>
+    <description>Recent content in C# on 佑哥部落格</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Thu, 02 Mar 2023 15:02:00 +0800</lastBuildDate><atom:link href="https://tzuyou.github.io/tags/c#/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>程式語言系列影片推薦(英文)</title>
+      <link>https://tzuyou.github.io/blog/post-2/</link>
+      <pubDate>Thu, 02 Mar 2023 15:02:00 +0800</pubDate>
+      
+      <guid>https://tzuyou.github.io/blog/post-2/</guid>
+      <description>C#教學影片推薦 以下皆為同YouTuber全課程教學 C#影片推薦: </description>
+    </item>
+    
+  </channel>
+</rss>
