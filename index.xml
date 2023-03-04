@@ -1,40 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>佑哥部落格</title>
+    <title>Yogurt&#39;s blog</title>
     <link>https://tzuyou.github.io/</link>
-    <description>Recent content on 佑哥部落格</description>
+    <description>Recent content on Yogurt&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Thu, 02 Mar 2023 15:02:00 +0800</lastBuildDate><atom:link href="https://tzuyou.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Mar 2023 22:58:00 +0800</lastBuildDate><atom:link href="https://tzuyou.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>程式語言系列影片推薦(英文)</title>
+      <title>Markdown程式語法介紹</title>
       <link>https://tzuyou.github.io/blog/post-2/</link>
-      <pubDate>Thu, 02 Mar 2023 15:02:00 +0800</pubDate>
+      <pubDate>Sat, 04 Mar 2023 22:58:00 +0800</pubDate>
       
       <guid>https://tzuyou.github.io/blog/post-2/</guid>
-      <description>C#教學影片推薦 以下皆為同YouTuber全課程教學 C#影片推薦: </description>
+      <description>Markdown為輕量級標記式語言，編寫的可讀性高，亦讀也亦寫，文章格式大致有下列幾種。
+第一種-標題 共有六種不同大小 標題1 標題2 標題3 標題4 標題5 標題6 第二種-字體 1.</description>
     </item>
     
     <item>
-      <title>文章格式寫法</title>
+      <title>程式語言介紹(含英文教學影片)</title>
       <link>https://tzuyou.github.io/blog/post-1/</link>
-      <pubDate>Thu, 23 Feb 2023 20:28:00 +0800</pubDate>
+      <pubDate>Thu, 02 Mar 2023 15:02:00 +0800</pubDate>
       
       <guid>https://tzuyou.github.io/blog/post-1/</guid>
-      <description>Hello World
-我是佑哥
-一級標題 二級標題 六級標題 早安世界
-有序 序 列 hello 無序 序 列 引用</description>
-    </item>
-    
-    <item>
-      <title>範例</title>
-      <link>https://tzuyou.github.io/blog/test/</link>
-      <pubDate>Tue, 29 Oct 2019 10:07:47 +0600</pubDate>
-      
-      <guid>https://tzuyou.github.io/blog/test/</guid>
-      <description>Heading 1 Heading 2 Heading 3 Heading 4 Heading 5 Heading 6 Emphasis Emphasis, aka italics, with asterisks or underscores.</description>
+      <description>以下資料皆擷取至網路，並在每篇底下附上連結! HTML介紹 (HyperText Markup Language)，超文本標記語言 一種建立網頁的標準標記語言，用來組織架構並呈現網頁內容的程式語言，打造出網頁的基礎並常與CSS與JavaScript一起使用在網頁設計。
+擷取資料參考 HTML教學影片推薦 CSS介紹 能幫助HTML變得更漂亮的程式語言!</description>
     </item>
     
   </channel>
