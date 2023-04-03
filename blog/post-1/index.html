@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<meta http-equiv="Permissions-Policy" content="interest-cohort=()">
 <html lang="zh-tw"><head>
   <meta charset="utf-8">
   <title>Yogurt&#39;s blog</title>
@@ -291,16 +292,20 @@
 }
 </style>
 
+<div class="mySidenav">
+  <a href="../index.html" class="home">Home</a>
+  <a href="https://tzuyou.github.io/blog/post-1/" class="blog1">程式語言介紹</a>
+  <a href="https://tzuyou.github.io/blog/post-2/" class="blog2">Markdown介紹</a>
+  <a href="https://tzuyou.github.io/blog/post-3/" class="blog3">HTML簡易教學</a>
+</div>
 
-<div class="sidenav">
-    <a href="../index.html">首頁</a>
-    <a href="https://tzuyou.github.io/blog/post-1/">程式語言介紹</a>
-    <a href="https://tzuyou.github.io/blog/post-2/">Markdown程式語法介紹</a>
-    <a href="https://tzuyou.github.io/blog/post-3/">HTML簡易教學</a>
-  </div>
+<div id="mySidepanel" class="sidepanel" style="overflow: hidden;">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="../index.html" id="home">Home</a>
+  <a href="https://tzuyou.github.io/blog/post-1/" id="blog1">程式語言介紹</a>
+  <a href="https://tzuyou.github.io/blog/post-2/" id="blog2">Markdown介紹</a>
+  <a href="https://tzuyou.github.io/blog/post-3/" id="blog3">HTML簡易教學</a>
+</div>
 
-  
-  <div class="main">
-    ...
-  </div></body>
+<button class="openbtn" onclick="openNav()">&#9776; 選單</button></body>
 </html>
