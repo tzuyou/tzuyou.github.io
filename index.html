@@ -1,5 +1,22 @@
 <html>
 <head>
+    <script>
+        var changed = false;
+        function changeColor(element) {
+            if(!changed){
+                var hex = Math.floor(Math.random() * 0xFFFFFF);
+                var color = "#" + ("000000" + hex.toString(16)).substr(-6);
+                element.style.color = color;
+                changed = true; 
+                setTimeout(function() {
+                    element.style.color = 'rgb(244, 247, 249)';
+                    changed = false;
+                }, 810);
+            }
+               
+        }
+    </script>
+
     <style>
         body {
             background-color: rgb(255, 229, 175);
@@ -48,7 +65,7 @@
         h1{
         	transition:0.65s;
         }
-        .card .red:hover{
+        /* .card .red:hover{
         	color:rgb(247, 103, 144);
         }
         .card .orange:hover{
@@ -59,7 +76,7 @@
         }
         .card .green:hover{
         	color:rgb(247, 168, 236);
-        }
+        } */
      	 
         .card .balloon {
             width: 100px;
@@ -107,10 +124,10 @@
     <div class="balloon"></div>
     <div class="balloon"></div>
     	<div class="text">
-        	 <span class="red"><h1>生</h1></span>
-              <span class="orange"><h1>日</h1></span>
-               <span class="yello"><h1>快</h1></span>
-                <span class="green"><h1>樂</h1></span>
+        	 <span class="red"><h1 id="id1" onclick="changeColor(this)">生</h1></span>
+              <span class="orange"><h1 id="id1" onclick="changeColor(this)">日</h1></span>
+               <span class="yello"><h1 id="id1" onclick="changeColor(this)">快</h1></span>
+                <span class="green"><h1 id="id1" onclick="changeColor(this)">樂</h1></span>
        	
         
     </div>
