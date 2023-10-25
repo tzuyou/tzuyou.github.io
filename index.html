@@ -1,338 +1,118 @@
-<!DOCTYPE html>
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-<meta http-equiv="Permissions-Policy" content="interest-cohort=()">
-<html lang="zh-tw"><head>
-  <meta charset="utf-8">
-  <title>Yogurt&#39;s blog</title>
+<html>
+<head>
+    <style>
+        body {
+            background-color: rgb(255, 229, 175);
+            font-family: Arial, sans-serif;
+        }
 
-  <!-- mobile responsive meta -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="程式分享">
-  <meta name="author" content="Yogurt">
-    
-  
-  <meta name="theme-name" content="liva-hugo" />
-  
-  <meta name="generator" content="Hugo 0.111.3">
+        .card {
+            width: 60%;
+            height: 45%;
+            margin: 50px auto;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgb(209, 209, 209);
+            background-color: rgb(244, 250, 255);
+            position: relative;
+            overflow: hidden;
+            transition:0.5s;
+            
+        }
+        .card:hover{
+        	box-shadow: 0 0 20px rgb(79, 82, 84);
+            transform: translate(-7px,-7px);
+        }
 
-  <!-- plugins -->
-  
-  <link rel="stylesheet" href="https://tzuyou.github.io/plugins/bootstrap/bootstrap.min.css ">
-  
-  <link rel="stylesheet" href="https://tzuyou.github.io/plugins/slick/slick.css ">
-  
-  <link rel="stylesheet" href="https://tzuyou.github.io/plugins/themify-icons/themify-icons.css ">
-  
-  <link rel="stylesheet" href="https://tzuyou.github.io/plugins/venobox/venobox.css ">
-  
+        .card .text {
+            text-align: center;
+            color: rgb(244, 247, 249);
+            margin-top: 100px;
+            display:flex;
+            justify-content:center;
+            font-size:300%;
+            text-indent:10px;
+            animation: text 5.5s ease-in-out infinite alternate;
+        }
+        @keyframes text {
+          	0%,
+          100% {
+            text-shadow: 0 0 20px rgb(162, 34, 216), 0 0 100px rgb(162, 34, 216), 0 0 20px rgb(162, 34, 216);
+          }
+          50% {
+            text-shadow: 0 0 50px rgb(244, 247, 249), 0 0 150px rgb(244, 247, 249), 0 0 50px rgb(244, 247, 249);
+          }
+          40% {
+          	text-shadow: 0 0 50px rgb(244, 247, 249), 0 0 150px rgb(244, 247, 249), 0 0 50px rgb(244, 247, 249);
+          }
+        }
+        h1{
+        	transition:0.65s;
+        }
+        .card .red:hover{
+        	color:rgb(247, 103, 144);
+        }
+        .card .orange:hover{
+        	color:rgb(242, 84, 84);
+        }
+        .card .yello:hover{
+        	color:rgb(205, 98, 247);
+        }
+        .card .green:hover{
+        	color:rgb(247, 168, 236);
+        }
+     	 
+        .card .balloon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -50px;
+            
+            animation: balloon 3s ease-in-out infinite alternate;
+        }
 
-  <!-- Main Stylesheet -->
-  
-  <link rel="stylesheet" href="https://tzuyou.github.io/scss/style.min.css" media="screen">
+        .card .balloon:nth-child(1) {
+            background-color: #ff9999;
+            animation-delay: 0s;
+            left: -20px;
+            
+        }
 
-  <!--Favicon-->
-  <link rel="shortcut icon" href="https://tzuyou.github.io/images/favicon.png " type="image/x-icon">
-  <link rel="icon" href="https://tzuyou.github.io/images/favicon.png " type="image/x-icon">
+        .card .balloon:nth-child(2) {
+            background-color: #99ccff;
+            animation-delay: 0.5s;
+            left: 25%;
+        }
 
-  
+        .card .balloon:nth-child(3) {
+            background-color: rgb(247, 247, 121);
+            animation-delay: 1s;
+            left:65%;
+        }
 
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5NX8PV6KMH"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-5NX8PV6KMH');
-</script>
-
+        @keyframes balloon {
+            from {
+                transform: translate(0, 0);
+            }
+            
+            to {
+                transform: translate(200px, -400px);
+            }
+        }
+    </style>
 </head>
 <body>
-<!-- preloader start -->
-<div class="preloader">
-  
-</div>
-<!-- preloader end -->
-<!-- navigation -->
-<header class="navigation">
-  <div class="container">
-    
-    <nav class="navbar navbar-expand-lg navbar-white bg-transparent border-bottom pl-0">
-      <a class="navbar-brand mobile-view" href="https://tzuyou.github.io"><img class="img-fluid"
-          src="https://tzuyou.github.io/images/logo.png" alt="Yogurt&#39;s blog"></a>
-      <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation">
-        <i class="ti-menu"></i>
-      </button>
-
-      <div class="collapse navbar-collapse text-center" id="navigation">
-        <div class="desktop-view">
-          <ul class="navbar-nav mr-auto">
-            
-            
-            
-            </li>
-            
-            
-            
-            </li>
-            
-          </ul>
-        </div>
-
-        <a class="navbar-brand mr-auto desktop-view" href="https://tzuyou.github.io"><img class="img-fluid"
-            src="https://tzuyou.github.io/images/logo.png" alt="Yogurt&#39;s blog"></a>
-
-        <ul class="navbar-nav">
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="https://tzuyou.github.io/about/">About</a>
-          </li>
-          
-          
-          
-          
-          <li class="nav-item">
-            <a class="nav-link" href="https://tzuyou.github.io/">Home</a>
-          </li>
-          
-          
-          
-        </ul>
-
+    <div class="card">
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    	<div class="text">
+        	 <span class="red"><h1>生</h1></span>
+              <span class="orange"><h1>日</h1></span>
+               <span class="yello"><h1>快</h1></span>
+                <span class="green"><h1>樂</h1></span>
+       	
         
-        <!-- search -->
-        <div class="search pl-lg-4">
-          <button id="searchOpen" class="search-btn"><i class="ti-search"></i></button>
-          <div class="search-wrapper">
-            <form action="https://tzuyou.github.io/search" class="h-100">
-              <input class="search-box px-4" id="search-query" name="s" type="search" placeholder="Type & Hit Enter...">
-            </form>
-            <button id="searchClose" class="search-close"><i class="ti-close text-dark"></i></button>
-          </div>
-        </div>
-        
-
-        
-      </div>
-    </nav>
-  </div>
-</header>
-<!-- /navigation -->
-
-
-
-<section class="section pb-0">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 mb-5 mb-lg-0">
-        <div class="row2">
-          
-          
-                  
-          <div class="col-md-6 mb-4">
-              <div class="card-body px-0">
-                
-                <a href="/categories/%e7%a8%8b%e5%bc%8f%e8%a8%ad%e8%a8%88"
-                  class="text-primary">程式設計</a>
-                
-                <a href="https://tzuyou.github.io/blog/post-3/" class="h5 d-block my-3">HTML簡易教學</a>
-                <div class="mb-3 post-meta">
-                  <span>By Yogurt</span>
-                  
-                  <span class="border-bottom border-primary px-2 mx-1"></span>
-                  <span>2023-03-10</span>
-                  
-                </div>
-                <p class="card-text">HTML教學包含基本概念、圖片和序列......等</p>
-                <a href="https://tzuyou.github.io/blog/post-3/" class="btn btn-outline-primary">read more</a>
-              </div>
-            </article>
-          </div>
-          
-                  
-          <div class="col-md-6 mb-4">
-              <div class="card-body px-0">
-                
-                <a href="/categories/%e7%a8%8b%e5%bc%8f%e8%a8%ad%e8%a8%88"
-                  class="text-primary">程式設計</a>
-                
-                <a href="https://tzuyou.github.io/blog/post-2/" class="h5 d-block my-3">Markdown程式語法介紹</a>
-                <div class="mb-3 post-meta">
-                  <span>By Yogurt</span>
-                  
-                  <span class="border-bottom border-primary px-2 mx-1"></span>
-                  <span>2023-03-04</span>
-                  
-                </div>
-                <p class="card-text">Markdownr文章形式簡單介紹</p>
-                <a href="https://tzuyou.github.io/blog/post-2/" class="btn btn-outline-primary">read more</a>
-              </div>
-            </article>
-          </div>
-          
-                  
-          <div class="col-md-6 mb-4">
-              <div class="card-body px-0">
-                
-                <a href="/categories/%e7%a8%8b%e5%bc%8f%e8%a8%ad%e8%a8%88"
-                  class="text-primary">程式設計</a>
-                
-                <a href="https://tzuyou.github.io/blog/post-1/" class="h5 d-block my-3">程式語言介紹</a>
-                <div class="mb-3 post-meta">
-                  <span>By Yogurt</span>
-                  
-                  <span class="border-bottom border-primary px-2 mx-1"></span>
-                  <span>2023-03-02</span>
-                  
-                </div>
-                <p class="card-text">常見幾種程式語言介紹，附上英文教學影片</p>
-                <a href="https://tzuyou.github.io/blog/post-1/" class="btn btn-outline-primary">read more</a>
-              </div>
-            </article>
-          </div>
-          
-        </div>
-      </div>
-      
-      <div class="col-lg-4">
-  <div class="widgets">
-    
-    <div class="widget">
-      
-      <h4 class="widget-title">About Me</h4>
-      
-      <img src="https://tzuyou.github.io/images/avatar.png" alt=""
-        class="img-fluid author-thumb-sm d-block mx-auto rounded-circle mb-4">
-      
-      <p class="p-title">Yogurt</p>
-      <a href="https://tzuyou.github.io/about/" class="btn btn-outline-primary">Know More</a>
-      
     </div>
-    
-    <div class="widget">
-      <h4 class="widget-title">Category</h4>
-      <ul class="list-unstyled">
-        <li><a
-            href="/categories/%e7%a8%8b%e5%bc%8f%e8%a8%ad%e8%a8%88/"><p class="p-subtitle">程式設計</p></a>
-        </li>
-      </ul>
-    </div>
-    
-      
-    
-    <div class="widget">
-      <h4 class="widget-title">Social</h4>
-      <ul class="list-inline social-links">
-        
-        <li class="list-inline-item"><a href="https://www.instagram.com/tzu.yu_216/"><i class="ti-instagram"></i></a></li>
-        
-        <li class="list-inline-item"><a href="https://github.com/tzuyou"><i class="ti-github"></i></a></li>
-        
-      </ul>
-    </div>
-    
-    </div>
-  </div>
-</div>
-
-      
-
-      
-      <div class="col-12 mt-5">
-        
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-
-
-
-<script>
-  var indexURL = "https://tzuyou.github.io/index.json"
-</script>
-
-<!-- JS Plugins -->
-
-<script src="https://tzuyou.github.io/plugins/jQuery/jquery.min.js"></script>
-
-<script src="https://tzuyou.github.io/plugins/bootstrap/bootstrap.min.js"></script>
-
-<script src="https://tzuyou.github.io/plugins/slick/slick.min.js"></script>
-
-<script src="https://tzuyou.github.io/plugins/venobox/venobox.min.js"></script>
-
-<script src="https://tzuyou.github.io/plugins/search/fuse.min.js"></script>
-
-<script src="https://tzuyou.github.io/plugins/search/mark.js"></script>
-
-<script src="https://tzuyou.github.io/plugins/search/search.js"></script>
-
-<!-- Main Script -->
-
-<script src="https://tzuyou.github.io/js/script.min.js"></script>
-
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
-<div id="js-cookie-box" class="cookie-box cookie-box-hide">
-	This site uses cookies. By continuing to use this website, you agree to their use. <span id="js-cookie-button" class="btn btn-sm btn-primary ml-2">I Accept</span>
-</div>
-<script>
-	(function ($) {
-		const cookieBox = document.getElementById('js-cookie-box');
-		const cookieButton = document.getElementById('js-cookie-button');
-		if (!Cookies.get('cookie-box')) {
-			cookieBox.classList.remove('cookie-box-hide');
-			cookieButton.onclick = function () {
-				Cookies.set('cookie-box', true, {
-					expires:  2 
-				});
-				cookieBox.classList.add('cookie-box-hide');
-			};
-		}
-	})(jQuery);
-</script>
-
-
-<style>
-.cookie-box {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  text-align: center;
-  z-index: 9999;
-  padding: 1rem 2rem;
-  background: rgb(71, 71, 71);
-  transition: all .75s cubic-bezier(.19, 1, .22, 1);
-  color: #fdfdfd;
-}
-
-.cookie-box-hide {
-  display: none;
-}
-</style>
-
-<div class="mySidenav">
-  <a href="../index.html" class="home">Home</a>
-  <a href="https://tzuyou.github.io/blog/post-1/" class="blog1">程式語言介紹</a>
-  <a href="https://tzuyou.github.io/blog/post-2/" class="blog2">Markdown介紹</a>
-  <a href="https://tzuyou.github.io/blog/post-3/" class="blog3">HTML簡易教學</a>
-</div>
-
-<div id="container">
-  <button class="openbtn" onclick="openNav()">&#9776; 選單</button>
-  <div id="mySidepanel" class="sidepanel" style="overflow: hidden;">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="../index.html" id="home">Home</a>
-    <a href="https://tzuyou.github.io/blog/post-1/" id="blog1">程式語言介紹</a>
-    <a href="https://tzuyou.github.io/blog/post-2/" id="blog2">Markdown介紹</a>
-    <a href="https://tzuyou.github.io/blog/post-3/" id="blog3">HTML簡易教學</a>
-  </div>
-</div></body>
+</body>
 </html>
