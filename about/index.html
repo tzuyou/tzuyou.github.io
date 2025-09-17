@@ -46,15 +46,34 @@
 
   
 
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5NX8PV6KMH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5NX8PV6KMH"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    gtag('config', 'G-5NX8PV6KMH');
+  </script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        tags: 'ams'
+      },
+      svg: { scale: 1.12, fontCache: 'global' }   
+    };
+  </script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <link rel="stylesheet" href="/css/mathjax-fix.css">
+  
 
-  gtag('config', 'G-5NX8PV6KMH');
-</script>
+
+
+  
 
 </head>
 <body>
@@ -194,6 +213,8 @@ function adjustStyles() {
           <li>
             <div class="circle">
               <div class="p90"></div>
+              <div class="p180"></div>
+              <div class="p270"></div>
             </div>
             程式語言
           </li>
@@ -201,7 +222,6 @@ function adjustStyles() {
             <div class="circle">
               <div class="p90"></div>
               <div class="p180"></div>
-              <div class="p270"></div>
             </div>
             網站架設
           </li>
@@ -222,12 +242,7 @@ function adjustStyles() {
         <ul class="listProgram">
           <li>C++
             <div class="bar">
-              <div class="value p5"></div>
-            </div>
-          </li>
-          <li>Java
-            <div class="bar">
-              <div class="value p10"></div>
+              <div class="value p60"></div>
             </div>
           </li>
           <li>Html
@@ -237,15 +252,15 @@ function adjustStyles() {
           </li>
           <li>Css
             <div class="bar">
-              <div class="value p60"></div>
+              <div class="value p40"></div>
             </div>
           </li>
           <li>JavaScript
             <div class="bar">
-              <div class="value p15"></div>
+              <div class="value p10"></div>
             </div>
           </li>
-          <li>Pyhon
+          <li>Python
             <div class="bar">
               <div class="value p50"></div>
             </div>
@@ -259,7 +274,7 @@ function adjustStyles() {
           <li class="year">2021
             <ul>
               <li>
-                開始了解程式語言
+                開始學習程式語言與運作知識
               </li>
             </ul>
           </li>
@@ -277,6 +292,32 @@ function adjustStyles() {
               </li>
               <li>
                 架設個人部落格
+              </li>
+            </ul>
+          </li>
+          <li class="year">2024
+            <ul>
+              <li>
+                學習C++/C，參加APCS、成大程設競賽、資奧初選。
+              </li>
+              <li>
+                APCS 4/3、成大程設晉級。
+              </li>
+            </ul>
+          </li>
+          <li class="year">2025
+            <ul>
+              <li>
+                運用AI串接製作錄音轉文字摘要稿。
+              </li>
+              <li>
+                運用AI製作模擬面試問答網頁。
+              </li>
+              <li>
+                使用Pytorch訓練AI使用文字庫。
+              </li>
+              <li>
+                了解生成式AI運作原理。
               </li>
             </ul>
           </li>

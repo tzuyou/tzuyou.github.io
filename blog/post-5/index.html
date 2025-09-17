@@ -17,7 +17,7 @@
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="APCS 2017-0304-2小群體">
+  <meta name="description" content="內容為學習所記筆記，省略些許東西，僅供參考">
   <meta name="author" content="Yogurt">
     
   
@@ -46,15 +46,34 @@
 
   
 
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5NX8PV6KMH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5NX8PV6KMH"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    gtag('config', 'G-5NX8PV6KMH');
+  </script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        tags: 'ams'
+      },
+      svg: { scale: 1.12, fontCache: 'global' }   
+    };
+  </script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <link rel="stylesheet" href="/css/mathjax-fix.css">
+  
 
-  gtag('config', 'G-5NX8PV6KMH');
-</script>
+
+
+  
 
 </head>
 <body>
@@ -138,142 +157,521 @@
         <a href="/categories/%e7%a8%8b%e5%bc%8f%e8%a8%ad%e8%a8%88"
           class="text-primary">程式設計</a>
         
-        <h2>APCS題解</h2>
+        <h2>C++演算法(上)</h2>
         <div class="mb-3 post-meta">
           <span>By Yogurt</span>
           
           <span class="border-bottom border-primary px-2 mx-1"></span>
-          <span>07 March 2024</span>
+          <span>17 September 2025</span>
           
         </div>
         
         <div class="content mb-5">
-          <h2 id="目錄">目錄</h2>
-<h2 id="apcs-2017-0304-2小群體">APCS 2017-0304-2小群體</h2>
+          <h3 id="演算法">演算法</h3>
 <blockquote>
-<p><a href="https://zerojudge.tw/ShowProblem?problemid=c291">題目來源：c291. APCS 2017-0304-2小群體</a></p>
+<p>具有時效性，不會形成無窮迴圈，能夠解決問題的一道方法。</p>
 </blockquote>
-<hr>
-<h3 id="題目敘述一群人在一起時經常會形成一個一個的小群體假設有-n個人編號由-0到-n-1每個人都寫下他最好朋友的編號最好朋友有可能是他自己的編號如果他自己沒有其他好友-在本題中每個人的好友編號絕對不會重複也就是說0到-n-1每個數字-都恰好出現一次">題目敘述：一群人在一起時經常會形成一個一個的小群體。假設有 N個人，編號由 0到 N-1，每個人都寫下他最好朋友的編號（最好朋友有可能是他自己的編號，如果他自己沒有其他好友）， 在本題中，每個人的好友編號絕對不會重複，也就是說0到 N-1每個數字 都恰好出現一次。</h3>
-<hr>
-<hr>
-<table>
-<thead>
-<tr>
-<th>輸入說明：</th>
-<th>輸出說明：</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>第一行是一個正整數N，說明團體中人數。</td>
-<td></td>
-</tr>
-<tr>
-<td>第二行依序是 0的好友編號 、1的好友編號 、…… 、N-1的好友編號。共有N個數字，包含 0到 N-1的每個數字恰好出現一次，數字間會有一個空白隔開。</td>
-<td>請輸出小群體的個數。</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h3 id="解題概念可以從第編號0人開始追蹤他的好友一直追蹤下去直到迴圈結束則為一個小群體過程中可以分為兩個方法-1使用迴圈-2使用遞迴dfs-兩者速度差不多使用dfs可以幫助練習遞迴觀念">解題概念：可以從第編號0人開始追蹤他的好友一直追蹤下去直到迴圈結束，則為一個小群體。過程中可以分為兩個方法 1.使用迴圈 2.使用遞迴(DFS)。 兩者速度差不多，使用DFS可以幫助練習遞迴觀念。</h3>
-<hr>
-<h3 id="方法1-迴圈-">方法1 (迴圈) :</h3>
-<h4 id="1-先開兩個陣列friendn-用來存放每個編號的朋友recordn-則記錄哪些人已經被遍歷過">1. 先開兩個陣列，<strong>friend[n]</strong> 用來存放每個編號的朋友，<strong>record[n]</strong> 則記錄哪些人已經被遍歷過。</h4>
-<h4 id="2-接著先把編號0n-1的朋友讀入陣列-friendn-">2. 接著先把編號0~N-1的朋友讀入陣列 <strong>friend[n]</strong> 。</h4>
-<h4 id="3-最後我們要開始遍歷所有人若這個人已被記錄過就continue否則就把當前編號紀錄為k然後小群體1並把當前的人記錄到recordn裡面然後使用無窮迴圈將當前編號k的朋友陣列設成p變數-int-p--friendsk並把p記錄在record裡最重要的一步我們要把k編號更新成原本k的朋友而當新的ki時則結束迴圈如此即可得出答案">3. 最後我們要開始遍歷所有人，若這個人已被記錄過就<strong>continue</strong>，否則就把當前編號紀錄為k，然後小群體+1，並把當前的人記錄到record[n]裡面。然後使用無窮迴圈，將當前編號k的朋友陣列設成p變數 (<code>int p = friends[k];</code>)，並把p記錄在record裡。<strong>最重要的一步，我們要把k編號更新成原本k的朋友，而當新的k=i時則結束迴圈。如此即可得出答案。</strong></h4>
-<h4 id="4-程式碼如下">4. 程式碼如下：</h4>
-<pre tabindex="0"><code>#include&lt;stdio.h&gt;
-
-#define n 50020
-
-
-
-int main(void)
+<h3 id="分治演算法">分治演算法</h3>
+<blockquote>
+<p>將一個大問題拆解成許多的子問題
+再由各子問題的<strong>解</strong>合併出答案</p>
+</blockquote>
+<h4 id="1-費伯納數列">1. 費伯納數列</h4>
+<ul>
+<li>直接遞迴</li>
+</ul>
+<blockquote>
+<p>在遞迴函數中直接呼叫本身</p>
+</blockquote>
+<pre tabindex="0"><code> int Fun(...)
 {
-    int N,i,k=0,ans=0;
-    int friends[n]={0};
-    int record[n]={0};
-    scanf(&#34;%d&#34;,&amp;N);
-    for(i=0;i&lt;N;i++)
+    ...
+        if(...)
+            Fun(...)
+    ...
+}
+</code></pre><ul>
+<li>間接遞迴</li>
+</ul>
+<blockquote>
+<p>在遞迴函數中呼叫其他遞迴，再從其他遞迴呼叫回遞迴函數。</p>
+</blockquote>
+<pre tabindex="0"><code>int Fun(...)        
+{
+    .
+    if(...)
+        Fun2(...)
+        ...
+}
+int Fun2(...)
+{
+    .
+    if (...)
+        Fun(...)
+        ...
+}
+</code></pre><p>For example:</p>
+<pre tabindex="0"><code>n! =nX(n-1) * (n-2) .....*1
+</code></pre><p>code</p>
+<pre tabindex="0"><code>int factorial(int i)
+{
+    
+   int sum;
+   if (i==0) /*終結*\
+   {
+    return(1); 
+   }
+   else
     {
-        scanf(&#34;%d&#34;,&amp;friends[i]);
+        sum = i*factorial(i-1); /*sum =n*(n-1)*\
     }
+    return sum;
+}
+</code></pre><p>For example2:</p>
+<blockquote>
+<p>第零項為0 第一項為1，每個項目皆由前兩項相加所得的數_費伯納序列(Fibonacci)。</p>
+</blockquote>
+<p>code</p>
+<pre tabindex="0"><code>int fib(int n)
+{
     
-    
-    for(i=0;i&lt;N;i++)
+    if (n==0) return 0;
+    if (n==1) return 1;
+    else
+        return fib(n-1)+fib(n-2);/*呼叫兩次*/
+}
+</code></pre><h4 id="2河內塔問題">2.河內塔問題</h4>
+<p>結論：</p>
+<blockquote>
+<p>步驟1: 將n-1盤子，從木樁1移到2
+步驟2: 移動第n個最大的盤子，從木樁1移到3
+步驟3: 將n-1盤子，從木樁2移到3</p>
+</blockquote>
+<p>限制:</p>
+<blockquote>
+<ol>
+<li>直徑較小套環永遠置於直徑較大的上方</li>
+<li>套還可隨意從木樁移到其他木樁</li>
+<li>每一次僅能移動一個套環，且為最上面開始移動</li>
+</ol>
+</blockquote>
+<p><img src="/images/post/h.png" alt=""></p>
+<p>code:</p>
+<pre tabindex="0"><code>#include&lt;stdio.h&gt;
+void hanoi(int n, int p1, int p2, int p3)
+{
+    if (n==1) /*出口*/
+        printf(&#34;第%d個套環從 %d 移到 %d\n&#34;,n,p1,p3);
+    else
     {
-        if(record[i]==-1)
-            continue;
-        else
-        {
-            k=i;
-            ans++;
-            record[i]=-1;
-            while(1)
-            {
+        hanoi(n-1,p1,p3,p2);
+        printf(&#34;第%d個套環從 %d 移到 %d\n&#34;,n,p1,p3);
+        hanoi(n-1,p2,p1,p3);
+    }
+}
 
-                int p = friends[k];
-                record[p]=-1;
-                k = friends[k];
-                if(k==i)
-                    break;
+int main()
+{
+    int n = 3; // 套環的數量
+    hanoi(n, 1, 2, 3); // 從柱子1移動到柱子3，使用柱子2作為中介
+    return 0;
+}
+</code></pre><h3 id="排序演算法">排序演算法</h3>
+<h4 id="1選擇排序">1.選擇排序</h4>
+<p>目的：找到數列中最小值往前排。</p>
+<pre tabindex="0"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+#define N 10
+/* run this program using the console pauser or add your own getch, system(&#34;pause&#34;) or input loop */
+int data[N];
+int main(void) {
+	srand(time(NULL));
+	int i,j,k,p,tmp;
+	for(i=0; i&lt;N ; i++){
+		data[i] =rand()%100;
+	}
+	for(i=0; i&lt;N ; i++){
+		printf(&#34;%d &#34;,data[i]);
+	}
+	k=0;
+	for(j=0;j&lt;N-1;j++)
+	{
+		for(i=j+1 ; i&lt;N ; i++){
+			if(data[i]&lt;data[k])
+				k=i;
+		}
+		tmp=data[j];
+		data[j]=data[k];
+		data[k]=tmp;
+	}
+	
+		
+	
+	printf(&#34;\n&#34;);
+	for(i=0; i&lt;N ; i++){
+		printf(&#34;%d &#34;,data[i]);
+	}
+}
+</code></pre><h4 id="2插入排序">2.插入排序</h4>
+<p>目的：從頭開始，一直往前找做交換。</p>
+<pre tabindex="0"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+#define N 10
+int data[N];
+int main(void) {
+	srand(time(NULL));
+	int i,j,k,p,tmp;
+	for(i=0; i&lt;N ; i++){
+		data[i] =rand()%100;
+	}
+	for(i=0; i&lt;N ; i++){
+		printf(&#34;%3d &#34;,data[i]);
+	}
+	printf(&#34;\n&#34;);
+	
+	
+	for(j=1;j&lt;N;j++)
+	{
+		tmp=data[j];
+		for(i=j;i&gt;0;i--){
+			if(data[i-1]&gt;data[i]){
+				data[i] =data[i-1];
+				data[i-1]=tmp;
+			}
+			else
+				break;
+		}
+		for(i=0; i&lt;N ; i++){
+			printf(&#34;%3d &#34;,data[i]);
+		}
+		printf(&#34;\n&#34;);
+	} 
+	
+		
+	
+	
+	
+}
+</code></pre><h4 id="3快速排序quick-sort">3.快速排序(quick sort)</h4>
+<p>核心：每次開始定一個虛擬值k(Pivot)，使數列切割點k的左側全部小於這個值，右側則大於這個值，最終就能抵達正確位置，再切割後兩邊繼續選k，如此循環便能由小到大排序。分割後數列繼續切割，不斷下去就能完成排序。</p>
+<p>屬於一個較不穩定的排序，若每次挑選中間值為最大或最小，會造成最壞情況 $$時間:O(n²)$$$$空間:O(n)$$</p>
+<blockquote>
+<p>最壞時變成單鏈深度為n，遞迴處理量:</p>
+</blockquote>
+<p>$$\underbrace{n+(n-1)+\cdots+1}_{\frac {n\times(n-1)}{2}}=O(n)\rightarrow\times O(n)= O(n^2)$$</p>
+<p>$$處理量乘上深度$$</p>
+<blockquote>
+<p>陣列大量重複元素或已經排序好的陣列選擇頭與尾會造成worse case</p>
+</blockquote>
+<p>較好以及平均而言為:
+$$時間:O(n\times \log_2n)、空間:O(\log_2n)。$$</p>
+<p><a href="https://zerojudge.tw/ShowProblem?problemid=a104">題目：a104. 排序</a></p>
+<p><img src="/images/post/3.png" alt="image"></p>
+<blockquote>
+<p>由於選擇位置+有大量重複元素，a233只得45%。</p>
+</blockquote>
+<p>程式碼：</p>
+<pre tabindex="0"><code>#include&lt;iostream&gt;
+#include&lt;vector&gt;
+using namespace std;
+void quick_sort(vector&lt;int&gt; &amp;nums,int ,int );
+int partition_find(vector&lt;int&gt; &amp;nums,int ,int);
 
+int partition_find(vector&lt;int&gt; &amp;nums, int l, int r) {
+        int privot = nums[l];
+        int i=l+1,j=r;
+        while(i&lt;=j){
+            if(nums[i]&lt;privot){
+                i++;
+            }
+            else if(nums[j]&gt;=privot){
+                j--;
+            }
+            else{
+                swap(nums[i],nums[j]);
             }
         }
-        
+        swap(nums[l], nums[j]);
+        return j;
     }
-    printf(&#34;%d&#34;,ans);
+void quick_sort(vector&lt;int&gt; &amp;nums, int l, int r) {
+    if (l &lt; r) {
+        int privot = partition_find(nums, l, r);
+        quick_sort(nums, l, privot - 1); // left
+        quick_sort(nums, privot + 1, r); // right
+    }
 }
-</code></pre><h3 id="方法2-遞迴-">方法2 (遞迴) :</h3>
-<h4 id="1-步驟大致一樣開兩陣列然後再讀入">1. 步驟大致一樣，開兩陣列，然後再讀入。</h4>
-<h4 id="2-開一迴圈如果當前被讀過就continue以便不會一直dfs節省時間否則群體1然後開始遞迴">2. 開一迴圈如果當前被讀過就continue(以便不會一直dfs，節省時間)，否則群體+1，然後開始遞迴。</h4>
-<h4 id="3-我們將編號-i-0n-1-輸進去遞迴裡而每次遞迴的變數則是-now也就是當前的編號這邊可以設ffriendnow-增加可讀性當-fnow-now跟now的朋友一樣-就-return-結束遞迴如果當前編號被掃過也要-return接者就可以開始記錄哪些已經遍歷然後在函式內呼叫-dfsf-被傳入的值f為先前now的朋友而重新一輪時的now就會更新成之前now的朋友-有點饒口xd">3. 我們將編號 i (0~N-1) 輸進去遞迴裡，而每次遞迴的變數則是 now，也就是當前的編號。這邊可以設<code>f=friend[now];</code> 增加可讀性，當 f=now (now跟now的朋友一樣) 就 return (結束遞迴)、如果當前編號被掃過也要 return，接者就可以開始記錄哪些已經遍歷，<strong>然後在函式內呼叫 <code>dfs(f)</code> 被傳入的值f為先前now的朋友，而重新一輪時的now就會更新成之前now的朋友</strong> (有點饒口XD)。</h4>
-<h4 id="4-程式碼如下-1">4. 程式碼如下：</h4>
-<pre tabindex="0"><code>#include&lt;stdio.h&gt;
-int N;
-int friends[50005];
-int ans=0;
-int record[50005];
-void dfs(int now)
-{
-    int f=friends[now];
-    if(now==f) 
-    {
-        return;
+int main(void){
+    int n;
+    vector&lt;int&gt; nums;
+    while(scanf(&#34;%d&#34;,&amp;n)!=EOF){
+        nums.clear();
+        int a;
+        for(int i=0;i&lt;n;i++){
+            scanf(&#34;%d&#34;,&amp;a);
+            nums.push_back(a);
+        }
+        quick_sort(nums,0,n-1);
+         for(int i=0;i&lt;n-1;i++){
+            printf(&#34;%d &#34;,nums[i]);
+        }
+        printf(&#34;%d&#34;,nums[n-1]);
+        }
+}
+</code></pre><h4 id="4合併排序merge-sort">4.合併排序(Merge sort)</h4>
+<p>核心：將數列拆解兩個兩個一組，排序後合併，再排序合併。
+簡單來說分為拆分與合併兩步驟。</p>
+<p>拆分：</p>
+<ol>
+<li>把大數列切一半成為兩個數列</li>
+<li>把切好的兩個數列再各自切一半</li>
+<li>重複步驟2直到每個數列都只剩一個元素</li>
+</ol>
+<p>合併：</p>
+<ol>
+<li>排序兩個只剩一個元素的數列並合併</li>
+<li>把兩邊排序好的數列合併並排序成一個數列</li>
+<li>重複步驟2直到所有數列都合併成一個完整數列</li>
+</ol>
+<p>平均而言:
+$$總共要處理O(\log_2n)，每次合併時間複雜度O(n)(排序部分)。因此O(n\times\log_2n)。
+空間複雜度O(n)，需要另外的空間。$$</p>
+<p><a href="https://zerojudge.tw/ShowProblem?problemid=a233">題目：a233. 排序法~~~ 挑戰極限</a>
+<img src="https://hackmd.io/_uploads/B1Yx2hHKee.png" alt="image"></p>
+<p>程式碼：</p>
+<pre tabindex="0"><code>#include&lt;iostream&gt;
+#include&lt;vector&gt;
+using namespace std;
+vector&lt;int&gt; v;
+int data[1000000];
+void merge_sort(int ,int );
+
+void merge_sort(int L,int R){
+    if (L==R) return;
+    //拆分
+    int M=(L+R)/2;
+    merge_sort(L,M);
+    merge_sort(M+1,R);
+    //合併
+    int i=L,j=M+1,k=L;
+    while(i&lt;=M || j&lt;=R){
+        if( j&gt;R || (i&lt;=M &amp;&amp; v[i]&lt;v[j])){
+            data[k]=v[i];
+            i++;
+        }
+        else{
+            data[k]=v[j];
+            j++;
+        }
+        k++;
     }
-    if(record[now]==-1) return;
-    record[now]=-1;
-    dfs(f);
+    //記得複製成新的陣列
+    for(i=L;i&lt;=R;i++){
+        v[i]=data[i];
+    }
+}
+int main(void){
+    cin.tie(0),cout.tie(0), ios::sync_with_stdio(false);
+    int N,a;
+
+    cin&gt;&gt;N;
+    for(int i=0;i&lt;N;i++) {
+        cin&gt;&gt;a;
+        v.push_back(a);
+    }
+    //merge sort
+    merge_sort(0,N-1);
+    for(int i=0;i&lt;N-1;i++){
+        cout&lt;&lt;v[i]&lt;&lt;&#39; &#39;;
+    }
+    cout&lt;&lt;v[N-1];
+
+}
+</code></pre><h4 id="5各類排序">5.各類排序</h4>
+<p>做比較</p>
+<pre tabindex="0"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+#include &lt;string.h&gt; 
+int N;
+
+int data[1000000];
+int test[1000000];
+
+void bubble_sort(int,int);		//氣泡排序 
+void selection_sort(int,int);	//選擇排序 
+void merge_sort(int,int);
+void show_test();		//顯示 test 陣列結果 
+
+
+int main(void){
+	printf(&#34;請輸入要產生的數量(1000000以內)： &#34;);
+	scanf(&#34;%d&#34;,&amp;N);
+	if(N&gt;=2000000){ printf(&#34;數量太大&#34;);	return 0;	}
+	
+	clock_t start_t;	
+	srand(time(NULL));
+	int i,j,k,p,tmp;	
+	for(i=0; i&lt; N; i++)	data[i]=(rand()%30000)*(rand()%30000);	//產生資料 
+
+	for(i=0; i&lt; N; i++)	test[i]=data[i];	//恢復資料 
+	start_t = clock();	//開始計時 
+	merge_sort(0,N-1);	//排序ing... 
+	printf(&#34;合併排序： %.3f\n&#34;, (double)(clock() - start_t) / CLOCKS_PER_SEC);
+	
+	for(i=0; i&lt; N; i++)	test[i]=data[i];	//恢復資料 
+	start_t = clock();	//開始計時 
+	bubble_sort(0,N-1);	//排序ing... 
+	printf(&#34;氣泡排序： %.3f\n&#34;, (double)(clock() - start_t) / CLOCKS_PER_SEC);
+	
+	for(i=0; i&lt; N; i++)	test[i]=data[i];	//恢復資料 
+	start_t = clock();	//開始計時 
+	selection_sort(0,N-1);	//排序ing... 
+	printf(&#34;選擇排序： %.3f\n&#34;, (double)(clock() - start_t) / CLOCKS_PER_SEC);
+	
+	
+}
+void show_test(){
+	int a;
+	for(a=0;a&lt;N;a++)
+		printf(&#34;%d &#34;,test[a]);	
+	printf(&#34;\n&#34;);
 }
 
-int main(void)
+void bubble_sort(int a,int b){
+	int i,j,k,tmp;
+	for(i=b;i&gt;0;i--){
+		for(j=1;j&lt;=i;j++){
+			if(test[j-1]&gt;test[j]){				
+				tmp=test[j-1],test[j-1]=test[j],test[j]=tmp;				
+			}
+		}
+	}
+}
+
+void selection_sort(int a,int b){
+	int i,j,k,tmp;
+	for(i=a;i&lt;=b;i++){		
+		k=i;
+		for(j=i+1;j&lt;=b;j++){
+			if(test[j]&lt;test[k]){				
+				k=j;				
+			}
+		}
+		
+		tmp=test[i],test[i]=test[k],test[k]=tmp;
+	}
+}
+int result[1000000];
+
+void merge_sort(int L, int R)
 {
-    scanf(&#34;%d&#34;,&amp;N);
-    int i;
-    for(i=0;i&lt;N;i++)
-    {
-        scanf(&#34;%d&#34;,&amp;friends[i]);
+	if(L==R) return;
+
+	
+	int M=(L+R)/2;
+	
+	merge_sort(L,M);
+	merge_sort(M+1,R);
+	
+	
+	int i=L,j=M+1,p=L;
+
+	while(i&lt;=M || j&lt;=R)
+	{
+		if(j&gt;R || (i&lt;=M &amp;&amp; test[i]&lt;test[j]))
+		{
+			result[p]=test[i];
+			i++;
+		}
+		else
+		{
+			result[p]=test[j];
+			j++;
+		}
+		p++;
+	}
+	for(i=L;i&lt;=R;i++)
+	{
+		test[i]=result[i];
+	}
+}
+</code></pre><h4 id="6基數演算法radix-sortmdslsd">6.基數演算法(Radix sort)[MDS+LSD]</h4>
+<p>LSD 是從鍵值的最邊開始，所以適合位數小的資料來做排序。反之MDS從最左邊，也就是最高位數來開始排序。如果位數很多的話，MSD會來得更有效率一些。</p>
+<h5 id="mds">MDS</h5>
+<h3 id="搜尋演算法">搜尋演算法</h3>
+<h4 id="1二分搜">1.二分搜</h4>
+<p>核心：數列必須經過排序。並且左右邊界一個指著可能的答案；一個指著不可能的答案，每次搜尋從中間開始搜尋。當答案比搜尋出來的結果大，表示答案在右側，更新左邊界，反之更新右邊界，記住過程中仍要遵守左右邊界一個可能一個不可能(注意是否+1；或是在while中做判斷)</p>
+<p>$$時間複雜度：O(\log_2n)，範圍\log_2n\sim \log_2 (n+1)。$$</p>
+<p><a href="https://zerojudge.tw/ShowProblem?problemid=d732">題目：d732. 二分搜尋法</a>
+<img src="https://hackmd.io/_uploads/H1zzBi6Ogl.png" alt="image">
+程式碼：</p>
+<pre tabindex="0"><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main(void){
+    int n,k;
+    scanf(&#34;%d%d&#34;,&amp;n,&amp;k);
+    int i,a;
+    vector&lt;int&gt; v;
+    for(i=0;i&lt;n;i++){
+        scanf(&#34;%d&#34;,&amp;a);
+        v.push_back(a);
     }
-    for(i=0;i&lt;N;i++)
-    {
-        if(record[i]==-1) 
-        {
+    v.push_back(-1);
+    for(i=0;i&lt;k;i++){
+        scanf(&#34;%d&#34;,&amp;a);
+        int l=0,r=n;
+        int ans=0;
+        if (a&gt;v[n-1] || a&lt;=0){
+            printf(&#34;%d\n&#34;,ans);
             continue;
         }
-        
-        else
-        {
-            ans++;
-            dfs(i);
+
+        while(l&lt;r){
+            int mid=(r+l)/2;
+            if(v[mid]==a){
+                ans=mid+1;
+                break;
+            }
+            else if(v[mid]&gt;a){
+                r=mid;
+            }
+            else if(v[mid]&lt;a){
+                l=mid+1;
+            }
+
         }
-        
+         printf(&#34;%d\n&#34;,ans);
     }
-    printf(&#34;%d&#34;,ans);
 }
-</code></pre><blockquote>
-<p>總結來說：遞迴較為直觀，寫起來較為簡潔(當題目要求更多時)，但此題為實作第二，因此兩種皆可以用。</p>
-</blockquote>
+</code></pre><h4 id="2內插搜尋法">2.內插搜尋法</h4>
+<p>核心：二分搜改良版。預測資料時使用斜率+二分搜藉以逼近答案。因此資料越平均分布時間複雜度越小。
+時間複雜度：平均優於 $O(log_2 n)$</p>
+<p>程式碼：</p>
+<pre tabindex="0"><code>int l=0,r=n-1,ans=0;
+        while(l&lt;=r){
+            int mid=l+((a-v[l])/(v[r]-v[l]))*(r-l);
+            if(v[mid]==a){
+                ans=mid+1;
+                break;
+            }
+            if(v[mid]&gt;a){
+                r=mid-1;
+            }
+            else{
+                l=mid+1;
+            }
+        }
+        printf(&#34;%d\n&#34;,ans);
+        
+</code></pre><h3 id="經典演算法">經典演算法</h3>
+<h4 id="貪心">貪心</h4>
+<h4 id="動態規劃dp">動態規劃(DP)</h4>
+<h4 id="枚舉">枚舉</h4>
+<h4 id="質數求解">質數求解</h4>
 
         </div>
         <script src="https://utteranc.es/client.js"

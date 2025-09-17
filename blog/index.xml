@@ -6,24 +6,37 @@
     <description>Recent content in Blogs on Yogurt&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
-    <lastBuildDate>Thu, 07 Mar 2024 22:58:00 +0800</lastBuildDate><atom:link href="https://tzuyou.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 17 Sep 2025 20:58:00 +0800</lastBuildDate><atom:link href="https://tzuyou.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>APCS題解</title>
+      <title>C&#43;&#43;演算法(上)</title>
       <link>https://tzuyou.github.io/blog/post-5/</link>
-      <pubDate>Thu, 07 Mar 2024 22:58:00 +0800</pubDate>
+      <pubDate>Wed, 17 Sep 2025 20:58:00 +0800</pubDate>
       
       <guid>https://tzuyou.github.io/blog/post-5/</guid>
-      <description>目錄 APCS 2017-0304-2小群體 題目來源：c291. APCS 2017-0304-2小群體
-題目敘述：一群人在一起時經常會形成一個一個的小群體。假設有 N個人，編號由 0到 N-1，每個人都寫下他最好朋友的編號（最好朋友有可能是他自己的編號，如果他自己沒有其他好友）， 在本題中，每個人的好友編號絕對不會重複，也就是說0到 N-1每個數字 都恰好出現一次。 輸入說明： 輸出說明： 第一行是一個正整數N，說明團體中人數。 第二行依序是 0的好友編號 、1的好友編號 、…… 、N-1的好友編號。共有N個數字，包含 0到 N-1的每個數字恰好出現一次，數字間會有一個空白隔開。 請輸出小群體的個數。 解題概念：可以從第編號0人開始追蹤他的好友一直追蹤下去直到迴圈結束，則為一個小群體。過程中可以分為兩個方法 1.</description>
+      <description>演算法 具有時效性，不會形成無窮迴圈，能夠解決問題的一道方法。
+分治演算法 將一個大問題拆解成許多的子問題 再由各子問題的解合併出答案
+1. 費伯納數列 直接遞迴 在遞迴函數中直接呼叫本身
+int Fun(.</description>
     </item>
     
     <item>
-      <title>C程式語言設計筆記</title>
+      <title>APCS題解</title>
+      <link>https://tzuyou.github.io/blog/post-6/</link>
+      <pubDate>Thu, 07 Mar 2024 22:58:00 +0800</pubDate>
+      
+      <guid>https://tzuyou.github.io/blog/post-6/</guid>
+      <description>目錄 APCS 2017-0304-2小群體 題目來源：c291. APCS 2017-0304-2小群體
+題目敘述：一群人在一起時經常會形成一個一個的小群體。假設有 N個人，編號由 0到 N-1，每個人都寫下他最好朋友的編號（最好朋友有可能是他自己的編號，如果他自己沒有其他好友）， 在本題中，每個人的好友編號絕對不會重複，也就是說0到 N-1每個數字 都恰好出現一次。</description>
+    </item>
+    
+    <item>
+      <title>C/C&#43;&#43;程式語言_基礎篇</title>
       <link>https://tzuyou.github.io/blog/post-4/</link>
       <pubDate>Thu, 08 Feb 2024 22:58:00 +0800</pubDate>
       
       <guid>https://tzuyou.github.io/blog/post-4/</guid>
-      <description>零、補充 一、基本運算子 邏輯 運算子 意義 &amp;amp;&amp;amp; AND,且 || OR,或 ! NOT,否 二、其他常用的運算子 增遞/減遞運算 運算子 意義 ++ 變數值加 1 - - 變數值減 1 i++：先執行整個敘述後, 再將 i 的值加 1 ++i：先將 i 的值加 1, 再執行整個敘述 2.</description>
+      <description>零&amp;mdash;補充 一、基本運算子 邏輯 運算符號： + - * / %(取餘數)
+優化c++ ios::sync_with_stdio(false), cin.</description>
     </item>
     
     <item>

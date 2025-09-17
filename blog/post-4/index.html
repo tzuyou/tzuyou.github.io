@@ -17,7 +17,7 @@
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="C語言學習筆記省略許多東西，僅參考用">
+  <meta name="description" content="內容為學習所記筆記，省略些許東西，僅供參考">
   <meta name="author" content="Yogurt">
     
   
@@ -46,15 +46,34 @@
 
   
 
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5NX8PV6KMH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5NX8PV6KMH"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    gtag('config', 'G-5NX8PV6KMH');
+  </script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        tags: 'ams'
+      },
+      svg: { scale: 1.12, fontCache: 'global' }   
+    };
+  </script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <link rel="stylesheet" href="/css/mathjax-fix.css">
+  
 
-  gtag('config', 'G-5NX8PV6KMH');
-</script>
+
+
+  
 
 </head>
 <body>
@@ -138,7 +157,7 @@
         <a href="/categories/%e7%a8%8b%e5%bc%8f%e8%a8%ad%e8%a8%88"
           class="text-primary">程式設計</a>
         
-        <h2>C程式語言設計筆記</h2>
+        <h2>C/C++程式語言_基礎篇</h2>
         <div class="mb-3 post-meta">
           <span>By Yogurt</span>
           
@@ -148,12 +167,17 @@
         </div>
         
         <div class="content mb-5">
-          <h1 id="零補充">零、補充</h1>
-<h2 id="一基本運算子">一、基本運算子</h2>
-<hr>
+          <h3 id="零---補充">零&mdash;補充</h3>
+<h4 id="一基本運算子">一、基本運算子</h4>
 <ol>
 <li>邏輯</li>
 </ol>
+<p>運算符號： + - * / %(取餘數)</p>
+<ul>
+<li>優化c++</li>
+<li><code>ios::sync_with_stdio(false), cin.tie(nullptr);</code></li>
+<li>前者解除同步；後者輸出終端改成全輸入後再一次輸出。</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -176,7 +200,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="二其他常用的運算子">二、其他常用的運算子</h2>
+<h4 id="二其他常用的運算子">二、其他常用的運算子</h4>
 <ol>
 <li>增遞/減遞運算</li>
 </ol>
@@ -200,7 +224,9 @@
 </table>
 <ul>
 <li>i++：先執行整個敘述後, 再將 i 的值加 1</li>
-<li>++i：先將 i 的值加 1, 再執行整個敘述
+<li>++i：先將 i 的值加 1, 再執行整個敘述</li>
+<li>特別的在for迴圈中，第三區塊是等所有程式執行完才進行。
+因此i++跟 ++i沒有太多差別(無運算式) 差在是否複製舊副本與回傳值，於int影響甚小。
 2.</li>
 </ul>
 <table>
@@ -240,23 +266,23 @@ else
 else
  abs = -a; 
 </code></pre><hr>
-<h1 id="壹格式化的輸入與輸出">壹、格式化的輸入與輸出</h1>
+<h3 id="壹格式化的輸入與輸出">壹、格式化的輸入與輸出</h3>
 <pre tabindex="0"><code>#include &lt;stdio.h&gt;#將檔案&lt;stdio.h&gt;將進來
 int main(){
     printf(&#34;Hello world!&#34;);
     return 0;
 }
 </code></pre><p><a href="https://">https://web.fg.tp.edu.tw/~earth/vision/study/cprogram06/C_handout.pdf</a></p>
-<h2 id="一標準輸出指令">一、標準輸出指令</h2>
+<h4 id="一標準輸出指令">一、標準輸出指令</h4>
 <p><code>printf(&quot;格式字串&quot;, N1, N2,...);</code></p>
 <p><code>scanf(&quot;格式字串&quot;,&amp;N1,&amp;N2,...);</code></p>
-<h3 id="printf">Printf</h3>
+<h5 id="printf">Printf</h5>
 <pre tabindex="0"><code>int main(){
 	int a = 1 ;
 	printf(&#34;Hello \n%d&#34;, a);
 	return 0; 
 } 
-</code></pre><h3 id="scanf">Scanf</h3>
+</code></pre><h5 id="scanf">Scanf</h5>
 <pre tabindex="0"><code>int main(){
 	int a,b;
 	scanf(&#34;%d%d&#34;,&amp;a,&amp;b);
@@ -266,9 +292,9 @@ int main(){
 <li>注意!如果要讀取字元陣列時，<code>str</code>它被當作指向字串的指標使用，所以在 scanf 函式中，我們直接使用陣列名稱 str 來讀取字串。因為 str 已經是一個指向陣列的指標，使用 &amp; 運算子會導致類型不匹配</li>
 </ul>
 <blockquote>
-<p>當使用 scanf 函式讀取字串時，應該直接使用陣列名稱（字串的指標），而不是使用 &amp; 運算子來取得字串的地址。這是因為 C 語言中的陣列名稱本身就是指向陣列首元素的指標，所以在 scanf 函式中使用陣列名稱，它會自動地被解釋為指向陣列的指標，而不需要使用額外的 &amp; 運算子。by_<strong>chatgtp</strong></p>
+<p>字串為字元的陣列</p>
 </blockquote>
-<h2 id="二跳脫字元escape-sequence">二、跳脫字元(Escape Sequence)</h2>
+<h4 id="二跳脫字元escape-sequence">二、跳脫字元(Escape Sequence)</h4>
 <table>
 <thead>
 <tr>
@@ -306,7 +332,7 @@ This is backslash: .
 \101 is A.
 \x41 is A.</p>
 </blockquote>
-<h2 id="三修飾子">三、修飾子</h2>
+<h4 id="三修飾子">三、修飾子</h4>
 <table>
 <thead>
 <tr>
@@ -329,9 +355,9 @@ This is backslash: .
 </tbody>
 </table>
 <hr>
-<h1 id="貳流程控制">貳、流程控制</h1>
-<h2 id="一if-指令">一、if 指令</h2>
-<h3 id="巨集">巨集</h3>
+<h3 id="貳流程控制">貳、流程控制</h3>
+<h4 id="一if-指令">一、if 指令</h4>
+<h5 id="巨集">巨集</h5>
 <blockquote>
 <p>define name 函式</p>
 </blockquote>
@@ -351,10 +377,10 @@ int main(){
     ...3;
     .....
 }
-</code></pre><pre tabindex="0"><code></code></pre><h3 id="單一條件不用加">單一條件不用加</h3>
+</code></pre><pre tabindex="0"><code></code></pre><h5 id="單一條件不用加">單一條件不用加</h5>
 <pre tabindex="0"><code>if (條件判斷)
     指令1 ;
-</code></pre><h3 id="all">ALL</h3>
+</code></pre><h5 id="all">ALL</h5>
 <pre tabindex="0"><code>int main(){
 	int a;
 	printf(&#34;輸入成績:&#34;);
@@ -368,8 +394,8 @@ int main(){
 	else
 		printf(&#34;不及格\n&#34;);
 }
-</code></pre><h2 id="二switch指令">二、switch指令</h2>
-<h3 id="casedefault">case、default</h3>
+</code></pre><h4 id="二switch指令">二、switch指令</h4>
+<h5 id="casedefault">case、default</h5>
 <hr>
 <p><img src="https://hackmd.io/_uploads/HJSMQ-39h.png" alt=""></p>
 <hr>
@@ -380,8 +406,8 @@ int main(){
 <table>
 <thead>
 <tr>
-<th style="text-align:center">Column 1</th>
-<th style="text-align:center">Column 2</th>
+<th style="text-align:center">等第</th>
+<th style="text-align:center">分數</th>
 </tr>
 </thead>
 <tbody>
@@ -431,6 +457,8 @@ int main(){
 	
 	switch ( a/10 ){
 		case 10:
+            printf(&#34;A&#34;);
+            break;
 		case 9:
 			printf(&#34;A&#34;);
 			break;
@@ -448,7 +476,7 @@ int main(){
 			break;
 	}
 }
-</code></pre><h3 id="for-迴圈">for 迴圈</h3>
+</code></pre><h5 id="for-迴圈">for 迴圈</h5>
 <pre tabindex="0"><code>for(變數起始1;條件;變數增減){
 
     程式1;
@@ -459,13 +487,13 @@ int main(){
     }
 
 }
-</code></pre><h3 id="while">while</h3>
+</code></pre><h5 id="while">while</h5>
 <pre tabindex="0"><code>while(條件判斷){
 
     程式區;
 
 }
-</code></pre><h3 id="do-while-後測試型迴圈">do-while (後測試型迴圈)</h3>
+</code></pre><h5 id="do-while-後測試型迴圈">do-while (後測試型迴圈)</h5>
 <blockquote>
 <p>do裡的程式碼會被先執行一次</p>
 </blockquote>
@@ -476,14 +504,14 @@ int main(){
 
 }
     while(條件判斷);
-</code></pre><h3 id="breakcontinue">break、continue</h3>
+</code></pre><h5 id="breakcontinue">break、continue</h5>
 <ul>
 <li>break跳脫迴圈不再執行下列程式</li>
 <li>continue持續執行迴圈並跳過下列程式</li>
 </ul>
-<h1 id="參陣列字串矩陣結構與檔案">參、陣列、字串、矩陣、結構與檔案</h1>
-<h2 id="一陣列">一、陣列</h2>
-<h3 id="一維">一維</h3>
+<h3 id="參陣列字串矩陣結構與檔案">參、陣列、字串、矩陣、結構與檔案</h3>
+<h4 id="一陣列">一、陣列</h4>
+<h5 id="一維">一維</h5>
 <ul>
 <li>元素個數可未設定(自動)</li>
 <li>超過個數長度時將自動設定為0</li>
@@ -498,7 +526,7 @@ int main(){
 </code></pre><pre tabindex="0"><code>資料型態 陣列名稱 [長度];
 </code></pre><p>或者</p>
 <pre tabindex="0"><code>資料型態 陣列名稱 [大小]={初始值1,..2,..3,...};
-</code></pre><h3 id="二維">二維</h3>
+</code></pre><h5 id="二維">二維</h5>
 <ul>
 <li>若初始值個數少於設定長度其餘將設定為0</li>
 <li>c/c++以列為主軸</li>
@@ -529,8 +557,8 @@ int main(){
 </table>
 <pre tabindex="0"><code>資料型態 陣列名稱 [列個數] [行個數];
 </code></pre><pre tabindex="0"><code>資料型態 陣列名稱 [列個數] [行個數] ={{var1,var2,var3},{var4,var5,var6}};
-</code></pre><h2 id="二結構">二、結構</h2>
-<h3 id="struct">struct</h3>
+</code></pre><h4 id="二結構">二、結構</h4>
+<h5 id="struct">struct</h5>
 <pre tabindex="0"><code>struct 結構名稱
 {
     資料型態 成員1;
@@ -563,7 +591,7 @@ int main(){
 	printf(&#34;%s%d&#34;,s2.name,s2.score);
 	return 0;
 }
-</code></pre><h3 id="巢狀struct">巢狀struct</h3>
+</code></pre><h5 id="巢狀struct">巢狀struct</h5>
 <pre tabindex="0"><code>struct 結構名稱1
 {
     資料型態 成員1;
@@ -578,7 +606,7 @@ struct 結構名稱2
     struct 結構名稱1 變數名稱;
 
 };
-</code></pre><h3 id="結構陣列">結構陣列</h3>
+</code></pre><h5 id="結構陣列">結構陣列</h5>
 <ul>
 <li>宣告</li>
 </ul>
@@ -609,199 +637,164 @@ struct 結構名稱2
 
 };
 struct student class1[5];
-</code></pre><hr>
-<h1 id="演算法_">演算法_</h1>
-<blockquote>
-<p>具有時效性，不會形成無窮迴圈</p>
-</blockquote>
+</code></pre><h3 id="容器-vectormapqueuestack">容器 vector、map、queue、stack</h3>
+<h4 id="map-vs-unorder_map">map vs unorder_map</h4>
+<h5 id="map">map</h5>
+<p>基礎建立於樹狀(紅黑樹)存取資料，遍歷時會自動排序好鍵(key)，因此在查找與插入為O(log n)。
+適合用在大於某個值得最小key等或是區間查詢。</p>
 <ul>
-<li>
-<h2 id="分治演算法">分治演算法</h2>
-</li>
+<li>find() 找尋某個值，回傳該值。</li>
+<li>map-&gt;second 回傳鍵值。</li>
+<li>count() 回傳元素有幾個。</li>
 </ul>
-<blockquote>
-<p>將一個大問題拆解成許多的子問題
-再由各子問題的<strong>解</strong>合併出答案</p>
-</blockquote>
+<h5 id="unorder_map">unorder_map</h5>
+<p>基礎建立於雜湊&amp;&amp;沒有順序之差。因此在查找與插入為O(1)，但需要消耗較多記憶體空間。
+適合使用大量查詢判斷是否有該值存在、以及鍵值為何。
+Key 數量大則很適用使用。</p>
 <ul>
-<li>
-<h2 id="遞迴演算法">遞迴演算法</h2>
-</li>
+<li>使用at()如果不存在，會直接out of range;</li>
+<li>如果發生碰撞問題會退化O (n)</li>
+<li>不允許重複元素</li>
+<li>reserve可避免rehash問題，影響執行效率。</li>
 </ul>
-<h3 id="1-費伯納數列">1. 費伯納數列</h3>
+<h5 id="vector">vector</h5>
+<p>動態的容器，每次push_back()、insert，都會重新分配記憶體。</p>
 <ul>
-<li>直接遞迴</li>
+<li>reserve()分配記憶體。</li>
+<li>assign(n,value)，重構並指定數值。
+<code>visited.assign(n+1, vector&lt;bool&gt;(m+1, false));</code>(二維靜態)
+<code>vector&lt;vector&lt;int&gt;&gt; v(n);</code>(二維動態)</li>
+<li>push_back()放入尾端</li>
+<li>size()陣列元素的總數</li>
+<li>begin()指著第一個元素，end()指著最後元素的下一個
+it++ 會保留舊副本; ++ it 則會直接下一個，在map等效率很重視++it</li>
+<li>empty()回傳是否為空，true or false</li>
 </ul>
-<blockquote>
-<p>在遞迴函數中直接呼叫本身</p>
-</blockquote>
-<pre tabindex="0"><code> int Fun(...)
-{
-    ...
-        if(...)
-            Fun(...)
-    ...
-}
-</code></pre><ul>
-<li>間接遞迴</li>
-</ul>
-<blockquote>
-<p>在遞迴函數中呼叫其他遞迴，再從其他遞迴呼叫回遞迴函數。</p>
-</blockquote>
-<pre tabindex="0"><code>int Fun(...)        
-{
-    .
-    if(...)
-        Fun2(...)
-        ...
-}
-int Fun2(...)
-{
-    .
-    if (...)
-        Fun(...)
-        ...
-}
-</code></pre><p>For example:</p>
-<pre tabindex="0"><code>n! =nX(n-1) * (n-2) .....*1
-</code></pre><p>code</p>
-<pre tabindex="0"><code>int factorial(int i)
-{
-    
-   int sum;
-   if (i==0) /*終結*\
-   {
-    return(1); 
-   }
-   else
-    {
-        sum = i*factorial(i-1); /*sum =n*(n-1)*\
+<pre tabindex="0"><code class="language-cpp!" data-lang="cpp!">for(auto it = v.begin(); it!= v.end();++it){
+        cout&lt;&lt;*it&lt;&lt;&#39; &#39;;
     }
-    return sum;
+</code></pre><h3 id="各種有用的-autoautostring">各種有用的 (auto、auto&amp;、string&hellip;)</h3>
+<h4 id="autoauto">auto、auto&amp;</h4>
+<p>auto用於複製一份資料。可iterate nums陣列。</p>
+<pre tabindex="0"><code class="language-cpp!" data-lang="cpp!">nums[4]={0,1,2,3,4};
+for(auto x:nums){
+    x=0;
 }
-</code></pre><p>For example2:</p>
-<blockquote>
-<p>第零項為0 第一項為1，每個項目皆由前兩項相加所得的數_費伯納序列(Fibonacci)。</p>
-</blockquote>
-<p>code</p>
-<pre tabindex="0"><code>int fib(int n)
-{
-    
-    if (n==0) return 0;
-    if (n==1) return 1;
-    else
-        return fib(n-1)+fib(n-2);/*呼叫兩次*/
+//nums-&gt;0 1 2 3 4
+</code></pre><p>auto&amp; 直接修改值本身</p>
+<pre tabindex="0"><code class="language-cpp!" data-lang="cpp!">nums[4]={0,1,2,3,4};
+for(auto &amp;x:nums){
+    x=0;
 }
-</code></pre><h3 id="2河內塔問題">2.河內塔問題</h3>
-<h4 id="結論">結論：</h4>
-<blockquote>
-<p>步驟1: 將n-1盤子，從木樁1移到2
-步驟2: 移動第n個最大的盤子，從木樁1移到3
-步驟3: 將n-1盤子，從木樁2移到3</p>
-</blockquote>
-<h4 id="限制">限制:</h4>
-<blockquote>
-<ol>
-<li>直徑較小套環永遠置於直徑較大的上方</li>
-<li>套還可隨意從木樁移到其他木樁</li>
-<li>每一次僅能移動一個套環，且為最上面開始移動</li>
-</ol>
-</blockquote>
-<p><img src="https://hackmd.io/_uploads/rkeJDhe1a.png" alt=""></p>
-<h4 id="code">code:</h4>
-<pre tabindex="0"><code>#include&lt;stdio.h&gt;
-void hanoi(int n, int p1, int p2, int p3)
-{
-    if (n==1) /*出口*/
-        printf(&#34;第%d個套環從 %d 移到 %d\n&#34;,n,p1,p3);
-    else
-    {
-        hanoi(n-1,p1,p3,p2);
-        printf(&#34;第%d個套環從 %d 移到 %d\n&#34;,n,p1,p3);
-        hanoi(n-1,p2,p1,p3);
+//nums-&gt;0 0 0 0 0
+</code></pre><h4 id="string">string</h4>
+<p><code>string +=</code>：添加字串<br>
+<code>string+</code>：字串相加<br>
+<code>at(i)</code>：存取索引值[i]的字元，存取越界會拋出一個例外<br>
+<code>find()</code>：字串搜尋，回傳字串首個位置。
+<code>substr(n,m)</code>：取得子字串，從n開始往印出m個字母。
+<code>empty()</code>：回傳是否為空，空則回傳true<br>
+<code>size()</code>：回傳目前長度<br>
+<code>length()</code>：回傳目前長度
+<code>append()</code>：添加字串</p>
+<pre tabindex="0"><code class="language-cpp!" data-lang="cpp!">for (auto &amp;c : str) {  
+        cout &lt;&lt; c &lt;&lt; &#39;\n&#39;;  
     }
 }
-
-int main()
-{
-    int n = 3; // 套環的數量
-    hanoi(n, 1, 2, 3); // 從柱子1移動到柱子3，使用柱子2作為中介
-    return 0;
-}
-</code></pre><h3 id="3選擇排序">3.選擇排序</h3>
-<pre tabindex="0"><code>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;time.h&gt;
-#define N 10
-/* run this program using the console pauser or add your own getch, system(&#34;pause&#34;) or input loop */
-int data[N];
+</code></pre><p>取得str的地址開始疊代。</p>
+<ul>
+<li>如果使用運算式相加會複製一份，可以使用append or += 提升效率</li>
+</ul>
+<h4 id="rotate">rotate</h4>
+<p>將陣列元素往後位移n個，中間begin使前方往後n個元素;反之end使後方往前n個元素。
+<code>rotate(v.begin(),v.begin/end(),n)</code> ;<code>#inlcude&lt;algorithm&gt;</code></p>
+<h4 id="sort-vs-qsort函式">sort vs qsort函式</h4>
+<p>結論是c++ stl sort一定比c的qsort快
+以下為使用方法</p>
+<h5 id="sort">sort</h5>
+<p>一般陣列 : sort(a,b) 指從a位置排到b位置 ,大到小則在sort(a,b,cmp) cmp中加入 <code>greater&lt;int&gt;()</code></p>
+<p>vector : sort(v.begin(),v.begin()+n) 也為相同道理，只是stl容器需要使用begin()+n來指定起終點。大到小同理<code>greater&lt;int&gt;()</code> 或是善用反向迭代 <code>sort(v.rbegin(),v.rend())</code></p>
+<pre tabindex="0"><code class="language-cpp!" data-lang="cpp!">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include&lt;vector&gt;
+using namespace std;
 int main(void) {
-	srand(time(NULL));
-	int i,j,k,p,tmp;
-	for(i=0; i&lt;N ; i++){
-		data[i] =rand()%100;
-	}
-	for(i=0; i&lt;N ; i++){
-		printf(&#34;%d &#34;,data[i]);
-	}
-	k=0;
-	for(j=0;j&lt;N-1;j++)
-	{
-		for(i=j+1 ; i&lt;N ; i++){
-			if(data[i]&lt;data[k])
-				k=i;
-		}
-		tmp=data[j];
-		data[j]=data[k];
-		data[k]=tmp;
-	}
-	
-		
-	
-	printf(&#34;\n&#34;);
-	for(i=0; i&lt;N ; i++){
-		printf(&#34;%d &#34;,data[i]);
-	}
+    int v[6]={2,7,3,1,4,5};
+    vector&lt;int&gt; v2={2,7,3,1,4,5};
+    sort(v,v+6); sort(v2.begin(),v2.end());
+    for(int i=0;i&lt;6;i++) {
+        cout&lt;&lt;v[i]&lt;&lt;&#34; &#34;;
+    }
+    cout&lt;&lt;&#34;\n&#34;;
+    for(int i=0;i&lt;6;i++) {
+        cout&lt;&lt;v2[i]&lt;&lt;&#34; &#34;;
+    }
+    cout&lt;&lt;&#34;\n&#34;;
 }
-</code></pre><h3 id="4插入排序">4.插入排序</h3>
-<pre tabindex="0"><code>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;time.h&gt;
-#define N 10
-int data[N];
+</code></pre><p>struct : 多加一個比較函式，看要針對結構哪個排序。 a.score &lt; b.score 回傳true 表示每個a&lt;b，由小到大排，反之大到小。</p>
+<pre tabindex="0"><code class="language-cpp!" data-lang="cpp!">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+struct node {
+    string name;
+    int score;
+}s[3];
+bool cmp(node a,node b) {
+    return a.score &lt; b.score;
+}
 int main(void) {
-	srand(time(NULL));
-	int i,j,k,p,tmp;
-	for(i=0; i&lt;N ; i++){
-		data[i] =rand()%100;
-	}
-	for(i=0; i&lt;N ; i++){
-		printf(&#34;%3d &#34;,data[i]);
-	}
-	printf(&#34;\n&#34;);
-	
-	
-	for(j=1;j&lt;N;j++)
-	{
-		tmp=data[j];
-		for(i=j;i&gt;0;i--){
-			if(data[i-1]&gt;data[i]){
-				data[i] =data[i-1];
-				data[i-1]=tmp;
-			}
-			else
-				break;
-		}
-		for(i=0; i&lt;N ; i++){
-			printf(&#34;%3d &#34;,data[i]);
-		}
-		printf(&#34;\n&#34;);
-	} 
-	
-		
-	
-	
-	
+    s[0].name=&#34;Ken&#34;;s[0].score=70;
+    s[1].name=&#34;Yellow&#34;;s[1].score=50;
+    s[2].name=&#34;Green&#34;;s[2].score=60;
+    for(auto st: s) {
+        cout&lt;&lt;st.name&lt;&lt;&#34; score:&#34;&lt;&lt;st.score&lt;&lt;endl;
+    }
+    sort(s,s+3,cmp);
+    for(auto st: s) {
+        cout&lt;&lt;st.name&lt;&lt;&#34; score:&#34;&lt;&lt;st.score&lt;&lt;endl;
+    }
+}
+</code></pre><h5 id="qsort">qsort</h5>
+<p>一般陣列： qsort(陣列，數量，記憶體形式，比較函式)。 指向int指向a，a-b為小到大， b-a為大到小。</p>
+<pre tabindex="0"><code class="language-cpp!" data-lang="cpp!">#include &lt;iostream&gt;
+using namespace std;
+int cmp(const void* a,const void* b) {
+    return (*(int *)a) - (*(int *)b);
+}
+int main(void) {
+    int v[5]={3,4,2,1,5};
+    for(auto st: v) {
+        cout&lt;&lt;st&lt;&lt;&#34; &#34;;
+    }
+    cout&lt;&lt;endl;
+    qsort(v,5,sizeof(int),cmp);
+    for(auto st: v) {
+        cout&lt;&lt;st&lt;&lt;&#34; &#34;;
+    }
+}
+</code></pre><p>struct : cmp中由int位置改成 struct node(結構名稱)。意思為struct node 指向 a 指向score， a-b為小到大， b-a為大到小。</p>
+<pre tabindex="0"><code class="language-cpp!" data-lang="cpp!">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include&lt;vector&gt;
+using namespace std;
+struct node {
+    string name;
+    int score;
+}s[3];
+int cmp(const void* a,const void* b) {
+    return ((struct node *)a)-&gt;score - ((struct node *)b)-&gt;score;
+}
+int main(void) {
+    s[0].name=&#34;Ken&#34;;s[0].score=70;
+    s[1].name=&#34;Yellow&#34;;s[1].score=50;
+    s[2].name=&#34;Green&#34;;s[2].score=60;
+    for(auto st: s) {
+        cout&lt;&lt;st.name&lt;&lt;&#34; score:&#34;&lt;&lt;st.score&lt;&lt;endl;
+    }
+    qsort(s,3,sizeof(struct node),cmp);
+    for(auto st: s) {
+        cout&lt;&lt;st.name&lt;&lt;&#34; score:&#34;&lt;&lt;st.score&lt;&lt;endl;
+    }
 }
 </code></pre>
         </div>
